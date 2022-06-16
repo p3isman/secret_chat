@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Chat from './components/Chat';
-import Lobby from './components/Lobby';
+import Chat from './components/Chat/Chat';
+import Lobby from './components/Lobby/Lobby';
 
 const App = () => {
   return (

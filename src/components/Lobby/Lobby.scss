@@ -1,0 +1,49 @@
+.join__outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #1a1a1d;
+
+  @media screen and (max-width: 480px) {
+    height: 100%;
+  }
+}
+
+.join__inner-container {
+  width: 20%;
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+  }
+}
+
+.join__input {
+  margin: 0.5rem 0;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+
+.heading {
+  padding-bottom: 10px;
+  font-size: 2.5rem;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 20px;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+  background-color: #2979ff;
+  border: none;
+  border-radius: 5px;
+
+  &:focus {
+    outline: 0;
+  }
+}
