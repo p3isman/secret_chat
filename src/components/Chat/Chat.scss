@@ -1,4 +1,4 @@
-.outerContainer {
+.chat__outer-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   }
 }
 
-.container {
+.chat__inner-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
