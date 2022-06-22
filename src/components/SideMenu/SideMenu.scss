@@ -1,0 +1,31 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  background-color: white;
+  border-radius: 0 15px 15px 0;
+  border-left: 2px solid gainsboro;
+  overflow: auto;
+
+  h3 {
+    margin-left: 2rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+
+  img {
+    width: 5px;
+    height: 5px;
+    margin: 0.5rem;
+    pointer-events: none;
+    user-select: none;
+  }
+}

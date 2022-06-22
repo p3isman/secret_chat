@@ -1,0 +1,30 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  background: #2979ff;
+  border-radius: 15px 0 0 0;
+}
+
+.inner-container-left {
+  display: flex;
+  align-items: center;
+  flex: 0.5;
+  margin-left: 5%;
+  color: white;
+}
+
+.inner-container-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0.5;
+  margin-right: 5%;
+}
+
+.online-icon {
+  margin-right: 5%;
+  pointer-events: none;
+}
