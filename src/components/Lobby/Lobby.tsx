@@ -9,7 +9,7 @@ const Lobby = () => {
   return (
     <div className='join__outer-container'>
       <div className='join__inner-container'>
-        <h1 className='heading'>Join</h1>
+        <h1 className='heading'>Live Chat</h1>
         <div>
           <input
             className='join__input'
@@ -27,7 +27,7 @@ const Lobby = () => {
             to={`/chat?name=${name}&room=${room}`}
             onClick={e => (!name || !room ? e.preventDefault() : null)}>
             <button className='btn' type='submit'>
-              Sign In
+              Join Chat
             </button>
           </Link>
         </div>
