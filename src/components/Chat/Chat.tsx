@@ -77,9 +77,9 @@ const Chat = () => {
     <div className='chat'>
       <div className='chat__outer-container'>
         <div className='chat__inner-container'>
-          {error && <p>{error}</p>}
           <TopBar room={room} />
           <Messages messages={messages} userName={userName} />
+          {error && <p>{error}</p>}
           <Input inputRef={inputRef} sendMessage={sendMessage} />
         </div>
         <div className='side-menu'>
