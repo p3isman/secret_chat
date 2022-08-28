@@ -14,10 +14,10 @@ const Input = ({ inputRef, sendMessage }: Props) => {
         ref={inputRef}
         type='text'
         placeholder='Type a message here'
-        onChange={e => (inputRef.current!.value = e.target.value)}
-        onKeyDown={e => (e.key === 'Enter' ? sendMessage(e) : null)}
+        onChange={(e) => (inputRef.current!.value = e.target.value)}
+        onKeyDown={(e) => (e.key === 'Enter' ? sendMessage(e) : null)}
       />
-      <button className='btn-send' onClick={e => sendMessage(e)}>
+      <button className='btn-send' onClick={(e) => sendMessage(e)}>
         Send
       </button>
     </form>
