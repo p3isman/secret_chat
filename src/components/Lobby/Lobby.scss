@@ -5,18 +5,34 @@
     align-items: center;
     height: 100vh;
     text-align: center;
+    background-image: radial-gradient(#adb3bf 1px, transparent 1px),
+      radial-gradient(#adb3bf 1px, transparent 1px);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px;
     background-color: #1a1a1d;
   }
 
   &__inner-container {
     width: 70%;
     max-width: 400px;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: #0b0b0c;
+    box-shadow: 0 0 10px #0b0b0c;
   }
 
   &__input {
     margin: 0.5rem 0;
     padding: 1rem 1.5rem;
     width: 100%;
+    border-radius: 15px;
+    border: none;
+
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: 0 0 15px #2979ff;
+    }
   }
 }
 
@@ -29,15 +45,17 @@
 
 .btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 20px;
-  width: 100%;
+  margin-top: 1.5rem;
+  padding: 15px 20px;
+  width: 50%;
+  font-size: 14px;
   text-decoration: none;
   color: white;
   background-color: #2979ff;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: all 0.3s;
+  cursor: pointer;
 
   &:hover {
     background-color: #1f61d4;
@@ -45,5 +63,9 @@
 
   &:focus {
     outline: 0;
+  }
+
+  &:disabled {
+    background-color: gray;
   }
 }
