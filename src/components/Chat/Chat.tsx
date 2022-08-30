@@ -52,8 +52,8 @@ const Chat = () => {
   }, [location.search]);
 
   useEffect(() => {
-    socket.on('message', message => {
-      setMessages(prevMessages => [...prevMessages, message]);
+    socket.on('message', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
     });
 
     socket.on('roomData', ({ users }) => {
