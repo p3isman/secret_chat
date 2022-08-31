@@ -1,0 +1,53 @@
+:root {
+  min-height: 100vh;
+  --bg-color: #1b1e25;
+  --main-color: white;
+  --icon-color: #7b7b83;
+  --msg-sent-color: #1b2735;
+  --msg-sent-border: #1b2433;
+  --msg-received-color: #26262e;
+  --msg-received-border: #2a2b2f;
+  --msg-text-color: #9b9aa0;
+  --input-color: #121617;
+  --btn-color: #579af1;
+  --btn-hover-color: #1f61d4;
+  --user-color: #5b9be5;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+
+  scrollbar-width: 10px;
+  scrollbar-color: var(--msg-sent-color) var(--input-color);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    color: var(--msg-sent-color);
+    background: var(--input-color);
+  }
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background: rgb(12, 28, 17);
+  background: radial-gradient(circle, rgba(12, 28, 17, 1) 0%, rgba(21, 16, 36, 1) 100%);
+}
