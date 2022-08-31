@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 2rem;
+  padding: 1rem;
+  background-color: var(--input-color);
+  border-radius: 15px;
+
+  input {
+    width: 90%;
+    font-size: 15px;
+    border: none;
+    color: var(--main-color);
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.btn-container {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-send {
+  display: inline-block;
+  color: var(--icon-color);
+  border: none;
+  transition: all 0.1s;
+
+  &:hover {
+    color: var(--main-color);
+  }
+}
