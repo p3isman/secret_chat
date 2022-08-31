@@ -12,31 +12,29 @@ const Lobby = () => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    navigate(`/chat?name=${name}&room=${room}`);
+    navigate(`/chat?name=${name.trim()}&room=${room}`);
   };
 
   return (
-    <div className='join__outer-container'>
-      <div className='join__inner-container'>
-        <h1 className='heading'>Secret Chat</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            className='join__input'
-            type='text'
-            placeholder='Name'
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            className='join__input'
-            type='text'
-            placeholder='Room'
-            onChange={(e) => setRoom(e.target.value)}
-          />
-          <button className='btn' type='submit' disabled={!isFormValid}>
-            Join Chat
-          </button>
-        </form>
-      </div>
+    <div className='lobby__container'>
+      <h1 className='heading'>Secret Chat</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          className='lobby__input'
+          type='text'
+          placeholder='Name'
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          className='lobby__input'
+          type='text'
+          placeholder='Room'
+          onChange={(e) => setRoom(e.target.value)}
+        />
+        <button className='btn' type='submit' disabled={!isFormValid}>
+          Join Chat
+        </button>
+      </form>
     </div>
   );
 };

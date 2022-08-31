@@ -11,13 +11,9 @@ interface Props {
 const Messages = ({ messages, userName }: Props) => {
   return (
     <ScrollToBottom className='messages'>
-      <div>
-        {messages.map((message, i) => (
-          <div key={i}>
-            <Message message={message} userName={userName} />
-          </div>
-        ))}
-      </div>
+      {messages.map((message, i) => (
+        <Message key={i} message={message} userName={userName} />
+      ))}
     </ScrollToBottom>
   );
 };
