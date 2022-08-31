@@ -17,7 +17,7 @@ export interface Message {
   text: string;
 }
 
-const ENDPOINT = 'localhost:8080';
+const ENDPOINT = 'https://live-chat-server-nodejs.herokuapp.com/';
 
 let socket: Socket;
 
