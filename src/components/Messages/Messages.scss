@@ -2,4 +2,24 @@
   flex: 1;
   padding: 0 0.3rem 1rem 1rem;
   overflow-y: auto;
+  border-bottom: 2px solid var(--input-color);
+
+  &__scroll-btn {
+    position: absolute;
+    right: 1rem;
+    bottom: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--btn-color);
+    color: var(--msg-sent-color);
+    transition: all 0.1s;
+
+    &:hover {
+      background-color: var(--btn-hover-color);
+    }
+  }
 }
