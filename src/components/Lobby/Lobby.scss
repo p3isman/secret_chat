@@ -6,6 +6,16 @@
     border-radius: 20px;
     background-color: var(--bg-color);
     box-shadow: 0 0 10px #0b0b0c;
+
+    @media screen and (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      max-width: fit-content;
+      border-radius: 0;
+    }
   }
 
   &__input {
