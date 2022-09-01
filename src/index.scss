@@ -42,6 +42,10 @@ code {
     monospace;
 }
 
+button {
+  all: unset;
+}
+
 .main {
   display: flex;
   justify-content: center;
