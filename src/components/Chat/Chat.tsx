@@ -82,7 +82,7 @@ const Chat = () => {
       <div className='chat__inner-container'>
         {error && <p>{error}</p>}
         <TopBar room={room} />
-        <Messages messages={messages} userName={userName} />
+        <Messages messages={messages} userName={userName} loading={loading} />
         <MessageForm inputRef={inputRef} sendMessage={sendMessage} />
       </div>
       <SideMenu
