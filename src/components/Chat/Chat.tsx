@@ -45,11 +45,6 @@ const Chat = () => {
         setError(error);
       }
     });
-
-    return () => {
-      socket.disconnect();
-      socket.off();
-    };
   }, [location.search]);
 
   useEffect(() => {
@@ -61,6 +56,12 @@ const Chat = () => {
       setUsers(users);
       setLoading(false);
     });
+
+    return () => {
+      socket.off('message');
+      socket.off('roomData');
+      socket.disconnect();
+    };
   }, []);
 
   const sendMessage: React.FormEventHandler<HTMLFormElement> = (e) => {
