@@ -1,4 +1,4 @@
-# Live Chat App
+# Secret Chat
 
 A secret chat client that allows for user generated rooms to chat with multiple users.
 
