@@ -1,22 +1,37 @@
-.join {
-  &__outer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #1a1a1d;
-  }
-
-  &__inner-container {
+.lobby {
+  &__container {
     width: 70%;
     max-width: 400px;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 10px #0b0b0c;
+
+    @media screen and (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      max-width: fit-content;
+      border-radius: 0;
+    }
   }
 
   &__input {
     margin: 0.5rem 0;
     padding: 1rem 1.5rem;
     width: 100%;
+    background-color: var(--input-color);
+    color: var(--icon-color);
+    border: none;
+    border-radius: 15px;
+
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: 0 0 3px var(--btn-color);
+    }
   }
 }
 
@@ -29,15 +44,17 @@
 
 .btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 20px;
-  width: 100%;
+  margin-top: 1.5rem;
+  padding: 15px 20px;
+  width: 50%;
+  font-size: 14px;
   text-decoration: none;
   color: white;
-  background-color: #2979ff;
+  background-color: var(--btn-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: all 0.3s;
+  cursor: pointer;
 
   &:hover {
     background-color: #1f61d4;
@@ -45,5 +62,9 @@
 
   &:focus {
     outline: 0;
+  }
+
+  &:disabled {
+    background-color: gray;
   }
 }

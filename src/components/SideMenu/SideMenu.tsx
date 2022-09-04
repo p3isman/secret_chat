@@ -1,25 +1,50 @@
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { User } from '../Chat/Chat';
+import { GrStatusGoodSmall } from 'react-icons/gr';
+import ClipLoader from 'react-spinners/ClipLoader';
 import './SideMenu.scss';
-import onlineIcon from '../../res/online_icon.png';
 
 interface Props {
   users: User[];
+  setUsers: Dispatch<SetStateAction<User[]>>;
+  userName: string;
+  loading: boolean;
 }
 
-const SideMenu = ({ users }: Props) => {
+const SideMenu = ({ users, setUsers, userName, loading }: Props) => {
+  useEffect(() => {
+    const myUser = users.find((user) => user.name === userName);
+    if (myUser) {
+      const newUsers = users.filter((user) => user.name !== userName);
+      newUsers.unshift(myUser);
+      setUsers(newUsers);
+    }
+  }, [loading]);
+
   return (
-    <div>
+    <div className='side-menu'>
       <h3>Users</h3>
-      {users.length !== 0 ? (
-        users.map(user => (
-          <div key={user.name} className='user'>
-            <img src={onlineIcon} alt='Online icon' />
-            <p>{user.name}</p>
-          </div>
-        ))
-      ) : (
-        <p>Loading...</p>
+      {loading && (
+        <div className='spinner-container'>
+          <ClipLoader
+            color='#2979ff'
+            loading={loading}
+            speedMultiplier={0.75}
+            cssOverride={{ color: '#2979ff' }}
+          />
+        </div>
       )}
+
+      {users.map((user) => (
+        <div key={user.name} className='user'>
+          <GrStatusGoodSmall
+            color='lightgreen'
+            size={10}
+            style={{ marginRight: '0.5rem' }}
+          />
+          <p>{user.name}</p>
+        </div>
+      ))}
     </div>
   );
 };

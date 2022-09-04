@@ -4,12 +4,14 @@ import Lobby from './components/Lobby/Lobby';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Lobby />}></Route>
-        <Route path='/chat' element={<Chat />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <div className='main'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Lobby />}></Route>
+          <Route path='/chat' element={<Chat />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

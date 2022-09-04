@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import TopBar from '../TopBar/TopBar';
-import Input from '../Input/Input';
+import MessageForm from '../MessageForm/MessageForm';
 import './Chat.scss';
 import Messages from '../Messages/Messages';
 import SideMenu from '../SideMenu/SideMenu';
@@ -24,6 +24,7 @@ let socket: Socket;
 const Chat = () => {
   const [userName, setUserName] = useState<string>('');
   const [room, setRoom] = useState<string>('');
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
   const [error, setError] = useState<string>('');
@@ -44,48 +45,53 @@ const Chat = () => {
         setError(error);
       }
     });
-
-    return () => {
-      socket.disconnect();
-      socket.off();
-    };
   }, [location.search]);
 
   useEffect(() => {
-    socket.on('message', message => {
-      setMessages(prevMessages => [...prevMessages, message]);
+    socket.on('message', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
     });
 
     socket.on('roomData', ({ users }) => {
       setUsers(users);
+      setLoading(false);
     });
+
+    return () => {
+      socket.off('message');
+      socket.off('roomData');
+      socket.disconnect();
+    };
   }, []);
 
-  const sendMessage = (event?: React.KeyboardEvent | React.MouseEvent) => {
-    event?.preventDefault();
+  const sendMessage: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
 
-    if (inputRef.current?.value.length !== 0) {
+    if (inputRef.current!.value.trim().length !== 0) {
       socket.emit(
         'sendMessage',
-        inputRef.current?.value,
+        inputRef.current!.value,
         () => (inputRef.current!.value = '')
       );
+    } else {
+      inputRef.current!.value = '';
     }
   };
 
   return (
-    <div className='chat'>
-      <div className='chat__outer-container'>
-        <div className='chat__inner-container'>
-          <TopBar room={room} />
-          <Messages messages={messages} userName={userName} />
-          {error && <p>{error}</p>}
-          <Input inputRef={inputRef} sendMessage={sendMessage} />
-        </div>
-        <div className='side-menu'>
-          <SideMenu users={users} />
-        </div>
+    <div className='chat__outer-container'>
+      <div className='chat__inner-container'>
+        {error && <p>{error}</p>}
+        <TopBar room={room} />
+        <Messages messages={messages} userName={userName} loading={loading} />
+        <MessageForm inputRef={inputRef} sendMessage={sendMessage} />
       </div>
+      <SideMenu
+        users={users}
+        setUsers={setUsers}
+        userName={userName}
+        loading={loading}
+      />
     </div>
   );
 };
