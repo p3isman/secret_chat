@@ -3,7 +3,7 @@ import { BsArrowDownShort } from 'react-icons/bs';
 import { Message as MessageType } from '../Chat/Chat';
 import Message from './Message/Message';
 import './Messages.scss';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 interface Props {
@@ -16,7 +16,11 @@ const Messages = ({ messages, userName, loading }: Props) => {
   const [isScrollable, setIsScrollable] = useState<boolean>(false);
   const messagesRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
+  useEffect(() => {
+    updateScrollButton();
+  }, [messages]);
+
+  const updateScrollButton = () => {
     if (!messagesRef.current) {
       return;
     }
@@ -46,7 +50,7 @@ const Messages = ({ messages, userName, loading }: Props) => {
         ref={messagesRef}
         id='messages'
         className='messages'
-        onScroll={handleScroll}>
+        onScroll={updateScrollButton}>
         {messages.map((message, i) => (
           <Message key={i} message={message} userName={userName} />
         ))}
