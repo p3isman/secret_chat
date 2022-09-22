@@ -5,6 +5,8 @@ import MessageForm from '../MessageForm/MessageForm';
 import './Chat.scss';
 import Messages from '../Messages/Messages';
 import SideMenu from '../SideMenu/SideMenu';
+import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 export interface User {
   id: string;
@@ -17,8 +19,6 @@ export interface Message {
   text: string;
 }
 
-const ENDPOINT = 'https://live-chat-server-nodejs.herokuapp.com/';
-
 let socket: Socket;
 
 const Chat = () => {
@@ -27,22 +27,27 @@ const Chat = () => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [error, setError] = useState<string>('');
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const { name, room } = Object.fromEntries(params);
 
-    socket = io(ENDPOINT);
+    socket = io(import.meta.env.VITE_ENDPOINT);
 
     setUserName(name);
     setRoom(room);
 
     socket.emit('join', { name, room }, (error: string) => {
       if (error) {
-        setError(error);
+        navigate('/', {
+          state: {
+            error: 'Username is already taken.',
+          },
+        });
       }
     });
   }, [location.search]);
@@ -79,20 +84,26 @@ const Chat = () => {
   };
 
   return (
-    <div className='chat__outer-container'>
-      <div className='chat__inner-container'>
-        {error && <p>{error}</p>}
-        <TopBar room={room} />
-        <Messages messages={messages} userName={userName} loading={loading} />
-        <MessageForm inputRef={inputRef} sendMessage={sendMessage} />
-      </div>
-      <SideMenu
-        users={users}
-        setUsers={setUsers}
-        userName={userName}
-        loading={loading}
-      />
-    </div>
+    <>
+      {loading ? (
+        <div className='chat__loading-container'>
+          <ClipLoader
+            color='#2979ff'
+            loading={loading}
+            speedMultiplier={0.75}
+          />
+        </div>
+      ) : (
+        <div className='chat__outer-container'>
+          <div className='chat__inner-container'>
+            <TopBar room={room} />
+            <Messages messages={messages} userName={userName} />
+            <MessageForm inputRef={inputRef} sendMessage={sendMessage} />
+          </div>
+          <SideMenu users={users} setUsers={setUsers} userName={userName} />
+        </div>
+      )}
+    </>
   );
 };
 
