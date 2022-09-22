@@ -1,6 +1,7 @@
 .lobby {
   &__container {
     width: 70%;
+    height: 420px;
     max-width: 400px;
     padding: 2rem;
     border-radius: 20px;
@@ -47,6 +48,7 @@
   margin-top: 1.5rem;
   padding: 15px 20px;
   width: 50%;
+  height: 20px;
   font-size: 14px;
   text-decoration: none;
   color: white;
@@ -67,4 +69,12 @@
   &:disabled {
     background-color: gray;
   }
+}
+
+.error {
+  margin-bottom: 0.3rem;
+  padding: 0.5rem;
+  background: var(--error-color);
+  color: white;
+  border-radius: 10px;
 }
