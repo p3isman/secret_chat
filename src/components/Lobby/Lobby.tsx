@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Lobby.scss';
 
 const Lobby = () => {
