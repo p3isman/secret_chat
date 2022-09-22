@@ -12,6 +12,7 @@
   --btn-color: #579af1;
   --btn-hover-color: #1f61d4;
   --user-color: #5b9be5;
+  --error-color: #b00020;
 }
 
 body {
@@ -29,13 +30,20 @@ body {
   scrollbar-width: 10px;
   scrollbar-color: var(--msg-sent-color) var(--input-color);
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    color: var(--msg-sent-color);
-    background: var(--input-color);
-  }
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--input-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--msg-received-color);
+  border-radius: 10px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

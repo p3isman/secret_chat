@@ -4,15 +4,13 @@ import { Message as MessageType } from '../Chat/Chat';
 import Message from './Message/Message';
 import './Messages.scss';
 import { useEffect, useRef, useState } from 'react';
-import { ClipLoader } from 'react-spinners';
 
 interface Props {
   messages: MessageType[];
   userName: string;
-  loading: boolean;
 }
 
-const Messages = ({ messages, userName, loading }: Props) => {
+const Messages = ({ messages, userName }: Props) => {
   const [isScrollable, setIsScrollable] = useState<boolean>(false);
   const messagesRef = useRef<HTMLDivElement>(null);
 
@@ -36,16 +34,6 @@ const Messages = ({ messages, userName, loading }: Props) => {
 
   return (
     <>
-      {loading && (
-        <div className='spinner-container'>
-          <ClipLoader
-            color='#2979ff'
-            loading={loading}
-            speedMultiplier={0.75}
-            cssOverride={{ color: '#2979ff' }}
-          />
-        </div>
-      )}
       <div
         ref={messagesRef}
         id='messages'
